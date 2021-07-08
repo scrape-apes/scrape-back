@@ -1,10 +1,10 @@
 #### As a thrifter I want to search for an item once and find it in many places
-  - Feature Task: WebScraping offerUp, craigslist, ebay etc...
+  - Feature Task: WebScraping offerUp, craigslist, ebay etc
   - Acceptance Test: ensure that we provide all the results on one page
 
 
 #### As a user I want to be able to log in and have the app remember me
-  - Feature Task : Create an Auth/login/signup front page
+  - Feature Task: Create an Auth/login/signup front page
   - Acceptance Test: Ensure the user can login via form and redirect to scrape page
 
 
