@@ -9,7 +9,7 @@
 
 
 #### As a thrifter I want to be able to avoid going to big box stores and throwing my money at giant corporations
-  -  Feature Task: lookup is an app for upcycling goods, ones mans trash is another mans treasure
+  - Feature Task: lookup is an app for upcycling goods, ones mans trash is another mans treasure
   - Acceptance Test: Ensure that user is provided access to local site data via Craigslist, etc
 
 
