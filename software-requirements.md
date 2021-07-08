@@ -1,3 +1,31 @@
+#### As a thrifter I want to search for an item once and find it in many places
+     -  Feature Task: WebScraping offerUp, craigslist, ebay etc...
+     - Acceptance Test: ensure that we provide all the results on one page
+
+
+#### As a user I want to be able to log in and have the app remember me
+     - Feature Task : Create an Auth/login/signup front page
+     - Acceptance Test: Ensure the user can login via form and redirect to scrape page
+
+
+#### As a thrifter I want to be able to avoid going to big box stores and throwing my money at giant corporations
+     -  Feature Task: lookup is an app for upcycling goods, ones mans trash is another mans treasure
+     - Acceptance Test: Ensure that user is provided access to local site data via Craigslist, etc
+
+
+#### As a user I want to be able to do this on my Android AND iOS phone
+     - Feature Task: Use React Native to port to Android and iOS using Expo
+    - Acceptance Test: Ensure it works on two phone simulations
+
+#### As a user I want to be notified when a new item that fits my criteria is added
+    - Feature Task: Stretch: utilize push notifications to notify the user on their device
+     - Acceptance Test: Ensure that tests verify users are able to receive notifications via Expo
+
+
+#### As a user, I want to search for items that are within a certain distance from my location
+    -Feature Task: Geolocation data obtained from gps provided by phone through react native/expo OR geolocation API
+    -Acceptance Test: Ensure that when a user agrees to allow phone to utilize location, the correct location is populated on the back end
+
 ## Vision
 
 #### What is it?
