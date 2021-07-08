@@ -96,3 +96,16 @@ The minimum end product will allow a user to login, search for an item, be provi
 - The user is able to scroll the the results.
 - The user can return back to the search page, or the user can click through to be redirected to search result listing on its parent web page. This will pop up via the user's native browser.
 
+| Users         |
+|---------------|
+| user_id       |
+| username      |
+| password_hash |
+|               |    
+
+| Searches        |
+|-----------------|
+| search_id       |
+| user_id         |
+| search_terms    |
+| search_location |
