@@ -1,5 +1,5 @@
 #### As a thrifter I want to search for an item once and find it in many places
-  -  Feature Task: WebScraping offerUp, craigslist, ebay etc...
+  - Feature Task: WebScraping offerUp, craigslist, ebay etc...
   - Acceptance Test: ensure that we provide all the results on one page
 
 
@@ -23,8 +23,8 @@
 
 
 #### As a user, I want to search for items that are within a certain distance from my location
-  -Feature Task: Geolocation data obtained from gps provided by phone through react native/expo OR geolocation API
-  -Acceptance Test: Ensure that when a user agrees to allow phone to utilize location, the correct location is populated on the back end
+  - Feature Task: Geolocation data obtained from gps provided by phone through react native/expo OR geolocation API
+  - Acceptance Test: Ensure that when a user agrees to allow phone to utilize location, the correct location is populated on the back end
 
 ## Vision
 
