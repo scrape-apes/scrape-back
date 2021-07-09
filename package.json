@@ -20,7 +20,6 @@
     "get-dev-db-url": "heroku config:get DEV_DATABASE_URL",
     "get-prod-db-url": "heroku config:get DATABASE_URL"
   },
-  "engines": {"node": "14.17.0"},
   "jest": {
     "testEnvironment": "node"
   },
