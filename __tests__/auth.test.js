@@ -17,6 +17,6 @@ describe('Auth routes', () => {
       .post('/api/auth/signup')
       .send(user);
 
-    expect(body).toEqual({ ...user, user_id: 1 });
+    expect(body).toEqual({ id: '1', username: 'cabbott93@gmail.com' });
   });
 });
