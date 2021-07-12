@@ -16,7 +16,6 @@ describe.skip('Route tests', () => {
     await agent
       .post('/api/auth/signup')
       .send(user);
-
   });
 
   it('gets a list of couches from craigslist', async () => {
@@ -33,6 +32,6 @@ describe.skip('Route tests', () => {
       price: expect.any(String),
       link: expect.any(String)
     });
-  });
+  }, 10000);
 
 });
