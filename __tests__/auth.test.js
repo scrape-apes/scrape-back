@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe.skip('Auth routes', () => {
+describe('Auth routes', () => {
   beforeAll(() => {
     return setup(pool);
   });
