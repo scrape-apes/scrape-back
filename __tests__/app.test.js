@@ -20,8 +20,8 @@ describe('Route tests', () => {
 
   it('gets a list of couches from craigslist', async () => {
     // gets a couch list from craigslist
-  
-    const couch = await agent.get('/api/v1/results/couch%20brown/sandiego');
+
+    const couch = await agent.get('/api/v1/craigslist/results/couch%20brown/sandiego');
     // console.log(couch.body);
     //console.log('couch', couch);
     // checks to see if we received all first page entries

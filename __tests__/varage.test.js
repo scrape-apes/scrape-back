@@ -19,7 +19,7 @@ describe('Route tests', () => {
   });
 
   it('get items off varage sale', async () => {
-    const items = await agent.get('/api/v1/results/bike');
+    const items = await agent.get('/api/v1/varagesale/results/portland/bike');
     expect(items.body.length).toBe(12);
 
     expect(items.body[0]).toEqual({
