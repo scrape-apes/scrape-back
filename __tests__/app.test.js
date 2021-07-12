@@ -22,7 +22,7 @@ describe('Route tests', () => {
     // gets a couch list from craigslist
   
     const couch = await agent.get('/api/v1/results/couch%20brown/sandiego');
-    console.log(couch.body);
+    // console.log(couch.body);
     //console.log('couch', couch);
     // checks to see if we received all first page entries
     expect(couch.body.length).toBe(120);
