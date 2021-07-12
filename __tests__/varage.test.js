@@ -20,7 +20,14 @@ describe('Route tests', () => {
 
   it('get items off varage sale', async () => {
     const items = await agent.get('/api/v1/results/bike');
-    // console.log(items.body);
-  });
+    expect(items.body.length).toBe(12);
+
+    expect(items.body[0]).toEqual({
+      title: expect.any(String),
+      image: expect.any(String),
+      price: expect.any(String),
+      link: expect.any(String)
+    });
+  }, 10000);
 
 });
