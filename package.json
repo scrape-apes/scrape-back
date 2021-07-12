@@ -21,7 +21,8 @@
     "get-prod-db-url": "heroku config:get DATABASE_URL"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testTimeout": 70000
   },
   "keywords": [],
   "author": "",
