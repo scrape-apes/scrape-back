@@ -13,15 +13,16 @@ describe('Route tests', () => {
       password: 'password'
     };
 
-    const { body } = await agent
+    await agent
       .post('/api/auth/signup')
       .send(user);
-
   });
 
   it('gets a list of couches from craigslist', async () => {
     // gets a couch list from craigslist
-    const couch = await agent.get('/api/v1/results/couch');
+  
+    const couch = await agent.get('/api/v1/results/couch%20brown/sandiego');
+    console.log(couch.body);
     //console.log('couch', couch);
     // checks to see if we received all first page entries
     expect(couch.body.length).toBe(120);
@@ -33,6 +34,6 @@ describe('Route tests', () => {
       price: expect.any(String),
       link: expect.any(String)
     });
-  });
+  }, 10000);
 
 });
