@@ -37,9 +37,9 @@ describe('Auth routes', () => {
     expect(body).toEqual({ id: '1', username: 'cabbott93@gmail.com' });
 
     const invalidLoginRes = await request(app)
-      .post('/api/v1/login')
+      .post('/api/auth/login')
       .send({ username: 'cabbott93@gmail.com', password: 'pword' });
 
-    expect(invalidLoginRes).toEqual('error');
+    expect(invalidLoginRes.body).toEqual({ message: 'Incorrect password', status: 500 });
   });
 });
