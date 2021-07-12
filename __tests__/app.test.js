@@ -4,6 +4,8 @@ import request from 'supertest';
 import app from '../lib/app.js';
 
 describe('Route tests', () => {
+  const agent = request.agent(app);
+
   beforeAll(async () => {
     await setup(pool);
     const user = {
@@ -11,15 +13,16 @@ describe('Route tests', () => {
       password: 'password'
     };
 
-    await request(app)
+    const { body } = await agent
       .post('/api/auth/signup')
       .send(user);
+
   });
 
   it('gets a list of couches from craigslist', async () => {
     // gets a couch list from craigslist
-    const couch = await request(app).get('/api/v1/results/couch');
-
+    const couch = await agent.get('/api/v1/results/couch');
+    //console.log('couch', couch);
     // checks to see if we received all first page entries
     expect(couch.body.length).toBe(120);
 
