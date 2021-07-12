@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe.skip('Route tests', () => {
+describe('Route tests', () => {
   const agent = request.agent(app);
 
   beforeAll(async () => {
@@ -18,16 +18,10 @@ describe.skip('Route tests', () => {
       .send(user);
   });
 
-  it('get items off varage sale', async () => {
-    const items = await agent.get('/api/v1/results/varagesale/portland/bike');
-    expect(items.body.length).toBe(12);
+  it('get items off offerUp', async () => {
+    const items = await agent.get('/api/v1/results/offerup/couch');
 
-    expect(items.body[0]).toEqual({
-      title: expect.any(String),
-      image: expect.any(String),
-      price: expect.any(String),
-      link: expect.any(String)
-    });
-  }, 10000);
+    console.log('THIS IS THE TEST', items.body);
+  });
 
 });
