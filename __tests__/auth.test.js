@@ -3,11 +3,11 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe('Auth routes', () => {
+describe.skip('Auth routes', () => {
   beforeAll(() => {
     return setup(pool);
   });
-  
+
   it('signs a user up and stores their info into the database', async () => {
     const user = {
       username: 'cabbott93@gmail.com',
@@ -33,7 +33,7 @@ describe('Auth routes', () => {
     const { body } = await request(app)
       .post('/api/auth/login')
       .send(user);
-    
+
     expect(body).toEqual({ id: '1', username: 'cabbott93@gmail.com' });
 
     const invalidLoginRes = await request(app)

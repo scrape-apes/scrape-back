@@ -3,11 +3,19 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe.skip('Route tests', () => {
-  beforeAll(() => {
-    return setup(pool);
+describe('Route tests', () => {
+  beforeAll(async () => {
+    await setup(pool);
+    const user = {
+      username: 'cabbott93@gmail.com',
+      password: 'password'
+    };
+
+    await request(app)
+      .post('/api/auth/signup')
+      .send(user);
   });
-  
+
   it('gets a list of couches from craigslist', async () => {
     // gets a couch list from craigslist
     const couch = await request(app).get('/api/v1/results/couch');
