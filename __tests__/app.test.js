@@ -18,26 +18,14 @@ describe('Route tests', () => {
     //   .send(user);
   });
 
-  it('gets a list of couches from craigslist', async () => {
-    // gets a couch list from craigslist
-
-    // const couch = await agent.get('/api/v1/results/couch%20brown/Portland');
-    // expect(couch.body.length).toBe(120);
-
-    // // checks to see if our data comes back in the correct format
-    // expect(couch.body[0]).toEqual({
-    //   title: expect.any(String),
-    //   image: expect.any(String),
-    //   price: expect.any(String),
-    //   link: expect.any(String)
-    // });
+  it('gets a list of couches from our scrapers', async () => {
 
     const city = 'Portland';
-    const searchTerm = 'bike';
+    const searchTerm = 'couch';
     const items = await request(app)
       .get(`/api/v1/results/${searchTerm}/${city}`);
 
-    // expect(items.body.length).toBe(12);
+    expect(items.body.length).toBe(132);
     console.log(items.body.length);
     expect(items.body[0]).toEqual({
       title: expect.any(String),
