@@ -25,6 +25,7 @@ describe.skip('Route tests', () => {
     const items = await request(app)
       .get(`/api/v1/results/${searchTerm}/${city}`);
 
+
     expect(items.body.length).toBe(132);
     console.log(items.body.length);
     expect(items.body[0]).toEqual({
