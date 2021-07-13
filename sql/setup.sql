@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS users,
+searches;
+CREATE TABLE users (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  username TEXT NOT NULL,
+  password_hash TEXT NOT NULL
+);
+CREATE TABLE searches (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id BIGINT REFERENCES users(id),
+  search_terms TEXT NOT NULL,
+  search_location TEXT
+);
