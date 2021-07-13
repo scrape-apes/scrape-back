@@ -23,7 +23,6 @@ describe.skip('Route tests', () => {
 
   
     const couch = await agent.get('/api/v1/results/couch%20brown/sandiego');
-    console.log(couch.body);
     //console.log('couch', couch);
 
     // checks to see if we received all first page entries
