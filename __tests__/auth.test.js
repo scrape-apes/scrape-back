@@ -1,45 +1,52 @@
-// import pool from '../lib/utils/pool.js';
-// import setup from '../data/setup.js';
-// import request from 'supertest';
-// import app from '../lib/app.js';
 
-// describe.skip('Auth routes', () => {
-//   beforeAll(() => {
-//     return setup(pool);
-//   });
+import pool from '../lib/utils/pool.js';
+import setup from '../data/setup.js';
+import request from 'supertest';
+import app from '../lib/app.js';
 
-//   it('signs a user up and stores their info into the database', async () => {
-//     const user = {
-//       username: 'cabbott93@gmail.com',
-//       password: 'password'
-//     };
-//     const { body } = await request(app)
-//       .post('/api/auth/signup')
-//       .send(user);
+describe.skip('Auth routes', () => {
+  beforeAll(() => {
+    return setup(pool);
+  });
 
-//     expect(body).toEqual({ id: '1', username: 'cabbott93@gmail.com' });
-//   });
+  it('signs a user up and stores their info into the database', async () => {
+    const user = {
+      username: 'cabbott93@gmail.com',
+      password: 'password'
+    };
+    const { body } = await request(app)
+      .post('/api/auth/signup')
+      .send(user);
 
-//   it('logs in a user that already has an account in the database', async () => {
-//     const user = {
-//       username: 'cabbott93@gmail.com',
-//       password: 'password'
-//     };
+    expect(body).toEqual({ id: '1', session: expect.any(String), username: 'cabbott93@gmail.com' });
 
-//     await request(app)
-//       .post('/api/auth/signup')
-//       .send(user);
+    const duplicateUserRes = await request(app)
+      .post('/api/auth/signup')
+      .send(user);
 
-//     const { body } = await request(app)
-//       .post('/api/auth/login')
-//       .send(user);
+    expect(duplicateUserRes.body).toEqual({ message: 'Username already exists', status: 500 });
+  });
 
-//     expect(body).toEqual({ id: '1', username: 'cabbott93@gmail.com' });
+  it('logs in a user that already has an account in the database', async () => {
+    const user = {
+      username: 'cabbott93@gmail.com',
+      password: 'password'
+    };
 
-//     const invalidLoginRes = await request(app)
-//       .post('/api/auth/login')
-//       .send({ username: 'cabbott93@gmail.com', password: 'pword' });
+    await request(app)
+      .post('/api/auth/signup')
+      .send(user);
 
-//     expect(invalidLoginRes.body).toEqual({ message: 'Incorrect password', status: 500 });
-//   });
-// });
+    const { body } = await request(app)
+      .post('/api/auth/login')
+      .send(user);
+
+    expect(body).toEqual({ id: '1', username: 'cabbott93@gmail.com' });
+
+    const invalidLoginRes = await request(app)
+      .post('/api/auth/login')
+      .send({ username: 'cabbott93@gmail.com', password: 'pword' });
+
+    expect(invalidLoginRes.body).toEqual({ message: 'Incorrect password', status: 500 });
+  });
+});
