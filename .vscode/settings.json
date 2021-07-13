@@ -3,6 +3,9 @@
     "controller",
     "craigs",
     "craigslist",
-    "list"
+    "item",
+    "list",
+    "munger",
+    "price"
   ]
 }
