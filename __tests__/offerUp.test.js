@@ -2,78 +2,34 @@
 // import setup from '../data/setup.js';
 // import request from 'supertest';
 // import app from '../lib/app.js';
+import offerUpScraper from '../lib/utils/offerUpScraper.js';
 
-describe('Route tests', () => {
-  // const agent = request.agent(app);
-
-  // beforeAll(async () => {
-  //   await setup(pool);
-  //   const user = {
-  //     username: 'cabbott93@gmail.com',
-  //     password: 'password'
-  //   };
-
-  //   await agent
-  //     .post('/api/auth/signup')
-  //     .send(user);
-  // });
-  
-  function merge(prices, items) {
-    return items.map((item, index) => {
-      console.log(item, prices[index]);
-      return { 
-        ...item, price: prices[index]
-      };
-    }
-    );
-  }
+describe.skip('Route tests', () => {
   it('get items off offerUp', async () => {
-    const prices = [1, 2, 3, 4, 5];
-    const items = [{
-      title: 'banana',
-      link: 'tyigcv'
-    }, {
-      title: 'banana',
-      link: 'tyigcv'
-    }, {
-      title: 'banana',
-      link: 'tyigcv'
-    }, {
-      title: 'banana',
-      link: 'tyigcv'
-    }, {
-      title: 'banana',
-      link: 'tyigcv'
-    }];
+    const actual = await offerUpScraper('couch');
+    console.log('actual', actual);
 
-    const answer = merge(prices, items);
-  
-
-    expect(answer).toEqual([{
-      title: 'banana',
-      link: 'tyigcv',
-      price: 1
+    expect(actual).toEqual([{
+      title: expect.any(String),
+      link: expect.any(String),
+      price: expect.any(String),
     }, {
-      title: 'banana',
-      link: 'tyigcv',
-      price: 2
+      title: expect.any(String),
+      link: expect.any(String),
+      price: expect.any(String),
     }, {
-      title: 'banana',
-      link: 'tyigcv',
-      price: 3
+      title: expect.any(String),
+      link: expect.any(String),
+      price: expect.any(String),
     }, {
-      title: 'banana',
-      link: 'tyigcv',
-      price: 4
+      title: expect.any(String),
+      link: expect.any(String),
+      price: expect.any(String),
     }, {
-      title: 'banana',
-      link: 'tyigcv',
-      price: 5
+      title: expect.any(String),
+      link: expect.any(String),
+      price: expect.any(String),
     }]);
-    // const items = await agent.get('/api/v1/results/offerup/couch');
-    // const prices = [...document.querySelectorAll('.MuiTypography-body1')].map(prices => prices.textContent)
-
-
-  });
+  }, 45000);
 
 });
