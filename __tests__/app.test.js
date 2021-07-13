@@ -3,38 +3,36 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe.skip('Route tests', () => {
-  const agent = request.agent(app);
+describe('Route tests', () => {
+  // const agent = request.agent(app);
 
   beforeAll(async () => {
-    await setup(pool);
-    const user = {
-      username: 'cabbott93@gmail.com',
-      password: 'password'
-    };
+    // await setup(pool);
+    // const user = {
+    //   username: 'cabbott93@gmail.com',
+    //   password: 'password'
+    // };
 
-    await agent
-      .post('/api/auth/signup')
-      .send(user);
+    // await agent
+    //   .post('/api/auth/signup')
+    //   .send(user);
   });
 
-  it('gets a list of couches from craigslist', async () => {
-    // gets a couch list from craigslist
+  it('gets a list of couches from our scrapers', async () => {
 
-  
-    const couch = await agent.get('/api/v1/results/couch%20brown/sandiego');
-    //console.log('couch', couch);
+    const city = 'Portland';
+    const searchTerm = 'couch';
+    const items = await request(app)
+      .get(`/api/v1/results/${searchTerm}/${city}`);
 
-    // checks to see if we received all first page entries
-    expect(couch.body.length).toBe(120);
-
-    // checks to see if our data comes back in the correct format
-    expect(couch.body[0]).toEqual({
+    expect(items.body.length).toBe(132);
+    console.log(items.body.length);
+    expect(items.body[0]).toEqual({
       title: expect.any(String),
       image: expect.any(String),
       price: expect.any(String),
       link: expect.any(String)
     });
-  }, 10000);
+  }, 14000);
 
 });
