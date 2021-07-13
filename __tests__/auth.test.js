@@ -17,7 +17,13 @@ describe.skip('Auth routes', () => {
       .post('/api/auth/signup')
       .send(user);
 
-    expect(body).toEqual({ id: '1', username: 'cabbott93@gmail.com' });
+    expect(body).toEqual({ id: '1', session: expect.any(String), username: 'cabbott93@gmail.com' });
+
+    const duplicateUserRes = await request(app)
+      .post('/api/auth/signup')
+      .send(user);
+
+    expect(duplicateUserRes.body).toEqual({ message: 'Username already exists', status: 500 });
   });
 
   it('logs in a user that already has an account in the database', async () => {

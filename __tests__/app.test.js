@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe.skip('Route tests', () => {
+describe('Route tests', () => {
   const agent = request.agent(app);
 
   beforeAll(async () => {
