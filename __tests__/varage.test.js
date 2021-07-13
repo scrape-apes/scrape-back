@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe.skip('Route tests', () => {
+describe('Route tests', () => {
   const agent = request.agent(app);
 
   beforeAll(async () => {
@@ -19,7 +19,9 @@ describe.skip('Route tests', () => {
   });
 
   it('get items off varage sale', async () => {
-    const items = await agent.get('/api/v1/results/portland/bike');
+    const city = 'Seattle';
+    const searchTerm = 'bike';
+    const items = await agent.get(`/api/v1/results/${searchTerm}/${city}`);
     expect(items.body.length).toBe(12);
 
     expect(items.body[0]).toEqual({
