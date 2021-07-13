@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe.skip('Route tests', () => {
+describe('Route tests', () => {
   const agent = request.agent(app);
 
   beforeAll(async () => {
@@ -21,14 +21,21 @@ describe.skip('Route tests', () => {
   it('gets a list of couches from craigslist', async () => {
     // gets a couch list from craigslist
 
-    const couch = await agent.get('/api/v1/results/craigslist/couch%20brown/sandiego');
-    // console.log(couch.body);
-    //console.log('couch', couch);
-    // checks to see if we received all first page entries
+    const couch = await agent.get('/api/v1/results/couch%20brown/sandiego');
     expect(couch.body.length).toBe(120);
 
     // checks to see if our data comes back in the correct format
     expect(couch.body[0]).toEqual({
+      title: expect.any(String),
+      image: expect.any(String),
+      price: expect.any(String),
+      link: expect.any(String)
+    });
+
+    const items = await agent.get('/api/v1/results/portland/bike');
+    expect(items.body.length).toBe(12);
+
+    expect(items.body[0]).toEqual({
       title: expect.any(String),
       image: expect.any(String),
       price: expect.any(String),
