@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe('Route tests', () => {
+describe.skip('Route tests', () => {
   const agent = request.agent(app);
 
   beforeAll(async () => {
@@ -31,5 +31,7 @@ describe('Route tests', () => {
       link: expect.any(String)
     });
   }, 10000);
+
+  
 
 });
