@@ -64,7 +64,7 @@ describe('Route tests', () => {
     const results = await agent
       .get('/api/v1/results/1')
 
-    expect(results.body).toEqual([])
+    expect(results.body).toBeFalsy()
 
   })
 });
