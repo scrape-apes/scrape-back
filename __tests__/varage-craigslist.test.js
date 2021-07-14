@@ -19,7 +19,7 @@ describe.skip('Route tests', () => {
   });
 
   it('get items off varage sale', async () => {
-    const city = 'Seattle';
+    const city = 'San Francisco';
     const searchTerm = 'bike';
     const items = await agent.get(`/api/v1/results/${searchTerm}/${city}`);
     expect(items.body.length).toBe(12);
