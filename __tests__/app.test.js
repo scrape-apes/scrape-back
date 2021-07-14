@@ -53,4 +53,12 @@ describe('Route tests', () => {
 
     expect(body).toEqual([{ resultsId: '1', userId: '1', results: items.body }]);
   });
+
+  it('deletes results from search by id', async () => {
+    const { body } = await agent
+      .delete('/api/v1/results/1')
+    
+    expect(body).toEqual({ resultsId: '1', userId: '1', results: items.body })
+
+  })
 });
