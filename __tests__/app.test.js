@@ -17,6 +17,7 @@ describe.skip('Route tests', () => {
     user = await agent
       .post('/api/auth/signup')
       .send(newUser);
+
   });
 
   it('gets a list of couches from our scrapers', async () => {
