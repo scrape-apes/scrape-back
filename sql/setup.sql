@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS users,
-searches;
+searches,
+results;
 CREATE TABLE users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   username TEXT NOT NULL,
@@ -11,3 +12,8 @@ CREATE TABLE searches (
   search_terms TEXT NOT NULL,
   search_location TEXT
 );
+CREATE TABLE results (
+  results_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id BIGINT,
+  results JSON [] NOT NULL
+)
