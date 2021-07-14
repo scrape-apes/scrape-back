@@ -3,19 +3,20 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe('Route tests', () => {
+describe.skip('Route tests', () => {
   const agent = request.agent(app);
   let items;
+  let user;
   beforeAll(async () => {
     await setup(pool);
-    const user = {
+    const newUser = {
       username: 'cabbott93@gmail.com',
       password: 'password'
     };
 
-    await agent
+    user = await agent
       .post('/api/auth/signup')
-      .send(user);
+      .send(newUser);
   });
 
   it('gets a list of couches from our scrapers', async () => {
@@ -36,11 +37,11 @@ describe('Route tests', () => {
   }, 14000);
 
   it('stores results from a users search via POST', async () => {
-    
+    const userId = user.body.id;
     const { body } = await agent
       .post('/api/v1/results')
-      .send(items.body);
+      .send({  userId, results: items.body });
 
-    expect(body).toEqual('');
+    expect(body).toEqual({ resultsId: '1', userId: '1', results: items.body });
   });
 });

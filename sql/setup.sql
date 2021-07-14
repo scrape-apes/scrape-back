@@ -14,6 +14,6 @@ CREATE TABLE searches (
 );
 CREATE TABLE results (
   results_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  user_id BIGINT REFERENCES users(id),
-  results TEXT [] NOT NULL
+  user_id BIGINT,
+  results JSON [] NOT NULL
 )
