@@ -17,7 +17,6 @@ describe.skip('Route tests', () => {
     user = await agent
       .post('/api/auth/signup')
       .send(newUser);
-
   });
 
   it('gets a list of couches from our scrapers', async () => {
@@ -39,10 +38,35 @@ describe.skip('Route tests', () => {
 
   it('stores results from a users search via POST', async () => {
     const userId = user.body.id;
+
     const { body } = await agent
       .post('/api/v1/results')
       .send({  userId, results: items.body });
 
     expect(body).toEqual({ resultsId: '1', userId: '1', results: items.body });
   });
+
+
+  it('gets all stored search results from a user via GET', async () => {
+    const userId = user.body.id;
+    const { body } = await agent
+      .get(`/api/v1/results/${userId}`);
+
+    expect(body).toEqual([{ resultsId: '1', userId: '1', results: items.body }]);
+  });
+
+  it('deletes results from search by id', async () => {
+    const { body } = await agent
+      .delete('/api/v1/results/1')
+      .send({ userId: user.body.id });
+    
+    expect(body).toEqual({ resultsId: '1', userId: '1', results: items.body });
+
+    const results = await agent
+      .get('/api/v1/results/1');
+
+    expect(results.body).toBeFalsy();
+
+  });
+
 });
