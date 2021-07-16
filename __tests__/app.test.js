@@ -38,13 +38,14 @@ describe.skip('Route tests', () => {
 
   it('stores results from a users search via POST', async () => {
     const userId = user.body.id;
-   
+
     const { body } = await agent
       .post('/api/v1/results')
       .send({  userId, results: items.body });
 
     expect(body).toEqual({ resultsId: '1', userId: '1', results: items.body });
   });
+
 
   it('gets all stored search results from a user via GET', async () => {
     const userId = user.body.id;
@@ -67,4 +68,5 @@ describe.skip('Route tests', () => {
     expect(results.body).toBeFalsy();
 
   });
+
 });
